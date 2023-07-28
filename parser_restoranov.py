@@ -184,7 +184,7 @@ def get_all_restoran_in_city(cities_all_link: list):
             restoran.extend(href)
             n += 1
             time.sleep(1 / 3)
-        print(len(restoran), city, len(restoran) - balance[f'{city}'])
+        print(len(restoran), city)
         all_links.extend(restoran)
 
 
