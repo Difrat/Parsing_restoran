@@ -149,8 +149,8 @@ def get_empty_view_all():
                    if item.find('a', class_='show_all show_all_btn') == None]
     for n in cities_list:
         cities_list_href.extend(n)
-        balance.update({f'{x}': y for x, y in zip([city.get('href').split('/')[-1] for city in n], [int(num.find('span',
-                                                                        class_='grey').text.split()[-1]) for num in n])})
+        # balance.update({f'{x}': y for x, y in zip([city.get('href').split('/')[-1] for city in n], [int(num.find('span',
+        #                                                                 class_='grey').text.split()[-1]) for num in n])})
 
     href_all_cities.extend([item.get('href') for item in cities_list_href])
 
