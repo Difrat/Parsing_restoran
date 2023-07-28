@@ -95,14 +95,6 @@ def get_cities_view_all(list_alp: list):
         response = requests.get(url, cookies=cookies, headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
         cities_in_section = soup.find('ul', class_='cities-list clearfix clear scroll-container').find_all('a')
-        # cities_span = soup.find('ul', class_='cities-list clearfix clear scroll-container').find_all('span',
-        #                                                                                              class_='city_name')
-        cities_name = [city.get('href').split('/')[-1] for city in cities_in_section]
-        # cities_name = [city.text for city in cities_span]
-        restoran_span = soup.find('ul', class_='cities-list clearfix clear scroll-container').find_all('span',
-                                                                                                     class_='city-cnt')
-        restoran_total = [int(restoran.text.strip()) for restoran in restoran_span]
-        balance.update({f'{x}': y for x, y in zip(cities_name, restoran_total)})
         href_all_cities.extend([city.get('href') for city in cities_in_section])
         time.sleep(1 / 3)
 
@@ -149,9 +141,6 @@ def get_empty_view_all():
                    if item.find('a', class_='show_all show_all_btn') == None]
     for n in cities_list:
         cities_list_href.extend(n)
-        # balance.update({f'{x}': y for x, y in zip([city.get('href').split('/')[-1] for city in n], [int(num.find('span',
-        #                                                                 class_='grey').text.split()[-1]) for num in n])})
-
     href_all_cities.extend([item.get('href') for item in cities_list_href])
 
 
